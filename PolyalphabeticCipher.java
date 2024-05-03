@@ -7,20 +7,14 @@ public class PolyalphabeticCipher {
 
     static String encryption(String plainText , String key)
     {
-        //to match key lengthwith length of plaonText
-        while(key.length() < plainText.length())
-        {
-            key+=key;
-        }
-        //remove excess
-        key = key.substring(0, plainText.length());
+      
 
         StringBuilder res = new StringBuilder("");
         for(int i=0;i<plainText.length();i++)
         {
             int plainTextInt = (int) (plainText.charAt(i)-'a');
             int keyInt = (int) (key.charAt(i % key.length())-'a');
-            int encryptedInt = (plainTextInt+keyInt) %26;
+            int encryptedInt = (plainTextInt+keyInt) - 26;
             res.append((char) (encryptedInt + (int) 'a'));
         }
 
